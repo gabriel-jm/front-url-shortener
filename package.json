@@ -1,0 +1,19 @@
+{
+  "name": "front-url-shortener",
+  "version": "1.0.0",
+  "description": "Front-end of my url shortener API",
+  "private": true,
+  "author": "Gabriel José",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gabriel-JM/front-url-shortener.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gabriel-JM/front-url-shortener/issues"
+  },
+  "homepage": "https://github.com/Gabriel-JM/front-url-shortener#readme"
+}
