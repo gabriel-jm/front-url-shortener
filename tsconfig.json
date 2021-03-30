@@ -3,7 +3,8 @@
     "target": "es2018",
     "module": "ESNext",
     "outDir": "./public",
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"]
 }

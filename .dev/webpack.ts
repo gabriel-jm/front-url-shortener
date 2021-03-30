@@ -10,11 +10,16 @@ export default <webpack.Configuration> {
         test: /\.ts$/,
         use: 'ts-loader',
         exclude: /node_modules/
+      },
+      {
+        test: /\.(css|html)$/,
+        use: ['raw-loader'],
+        exclude: /node_modules/
       }
     ]
   },
   resolve: {
-    extensions: ['ts']
+    extensions: ['.html', '.css', '.ts']
   },
   output: {
     filename: 'main.js',
