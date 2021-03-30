@@ -1,9 +1,5 @@
 import { html } from './lib/template-functions/html'
-
-const routes: Record<string, string> = {
-  '/': 'app-home',
-  notFound: 'not-found'
-}
+import { routes } from './routes'
 
 class AppRoot extends HTMLElement {
   constructor() {
