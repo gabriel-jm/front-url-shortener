@@ -28,7 +28,14 @@ class AppRoot extends HTMLElement {
   }
 
   render() {
-    return html`<${this.handleUrl()}/>`
+    return html`
+      <style>
+        :host {
+          height: 100%;
+        }
+      </style>
+      <${this.handleUrl()}/>
+    `
   }
 }
 
