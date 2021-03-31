@@ -10,6 +10,10 @@
   --main: #00b1cc;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   color: var(--font-color);
