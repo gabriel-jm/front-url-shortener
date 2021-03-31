@@ -32,7 +32,10 @@ export class SuperElement extends HTMLElement {
     this.attachShadow({ mode })
 
     if(this.render)
-      this.root.innerHTML = this.render()
+      this.root.innerHTML = (this.cssStyle
+        ? `<style>${this.cssStyle()}</style>`
+        : ''
+      ) + this.render()
   }
 
   on(
@@ -50,6 +53,10 @@ export class SuperElement extends HTMLElement {
     }
 
     return element
+  }
+
+  cssStyle() {
+    return ''
   }
 
   render() {
