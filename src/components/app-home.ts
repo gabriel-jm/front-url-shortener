@@ -4,9 +4,29 @@ import { SuperElement } from '../lib/super-element'
 import { css } from '../lib/template-functions/css'
 import { html } from '../lib/template-functions/html'
 
+const urlValidationRegex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/
+
 class AppHome extends SuperElement {
   constructor() {
     super()
+  }
+
+  init() {
+    const input = this.select<HTMLInputElement>('[url-input]')
+    const btn = this.select('button')
+
+    btn.on('click', () => {
+      console.log(input.value)
+      const { value = '' } = input
+
+      const match = value.trim().match(urlValidationRegex)
+
+      if(!match || match[0] !== value) {
+        throw new Error('Insert an URL with a valid format')
+      }
+
+      console.log('valid format')
+    })
   }
 
   cssStyle() {
@@ -46,8 +66,9 @@ class AppHome extends SuperElement {
         <div class="url-input">
           <label>
             <span>Url</span>
-            <input />
+            <input url-input placeholder="Insert your url" />
           </label>
+          <button>Generate</button>
         </div>
       </section>
 
