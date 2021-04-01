@@ -2,13 +2,11 @@ export interface ShadowMode {
   mode: 'open' | 'closed'
 }
 
-export interface SelectedElement extends Element {
-  on(
-    eventType: string,
-    listener: EventListener | EventListenerObject,
-    options?: EventListenerOptions
-  ): void
-}
+export type onFunction = (
+  eventType: string,
+  listener: EventListener | EventListenerObject,
+  options?: EventListenerOptions
+) => void
 
 export interface ElementLayoutOptions {
   template: string
@@ -31,29 +29,30 @@ export class SuperElement extends HTMLElement {
 
     this.attachShadow({ mode })
 
-    if(this.render)
-      this.root.innerHTML = (this.cssStyle
-        ? `<style>${this.cssStyle()}</style>`
-        : ''
-      ) + this.render()
+    if(this.render) {
+      this.layout = {
+        template: this.render(),
+        style: this.cssStyle()
+      }
+    }
+
+    this.init && this.init()
   }
 
-  on(
-    eventType: string,
-    listener: EventListener | EventListenerObject,
-    options?: EventListenerOptions
-  ) {
+  on: onFunction = (eventType, listener, options) => {
     this.addEventListener(eventType, listener, options)
   }
 
-  select (query: string) {
-    const element = this.root.querySelector(query) as SelectedElement
+  select<T extends HTMLElement>(query: string) {
+    const element = this.root.querySelector(query) as T & { on: onFunction }
     element.on = (eventType, listener, options) => {
       element.addEventListener(eventType, listener, options)
     }
 
     return element
   }
+
+  init() {}
 
   cssStyle() {
     return ''
