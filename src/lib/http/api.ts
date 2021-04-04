@@ -5,15 +5,15 @@ const api = (url: string) => {
 }
 
 api.get = async (url: string) => {
-  return await request(url, 'GET')
+  return await request(baseUrl+url, 'GET')
 }
 
 api.post = async <TReturn, TEntry extends Object = TReturn>(url: string, data: TEntry) => {
-  return await request(url, 'POST', data)
+  return await request(baseUrl+url, 'POST', data)
 }
 
 api.delete = async (url: string) => {
-  return await request(url, 'DELETE')
+  return await request(baseUrl+url, 'DELETE')
 }
 
 async function request(url: string, method: string, body?: object | []) {
@@ -42,6 +42,6 @@ async function request(url: string, method: string, body?: object | []) {
   }
 }
 
-console.log(process.env.SERVER_URL)
+api(process.env.SERVER_URL)
 
 export { api }
