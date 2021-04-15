@@ -3,8 +3,7 @@ import './app-footer'
 import { SuperElement } from '../lib/super-element'
 import { css } from '../lib/template-functions/css'
 import { html } from '../lib/template-functions/html'
-
-const urlValidationRegex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/
+import { createShortenedUrl } from '../use-cases/create-shortened-url'
 
 class AppHome extends SuperElement {
   constructor() {
@@ -16,16 +15,9 @@ class AppHome extends SuperElement {
     const btn = this.select('button')
 
     btn.on('click', () => {
-      console.log(input.value)
       const { value = '' } = input
 
-      const match = value.trim().match(urlValidationRegex)
-
-      if(!match || match[0] !== value) {
-        throw new Error('Insert an URL with a valid format')
-      }
-
-      console.log('valid format')
+      createShortenedUrl(value)
     })
   }
 
