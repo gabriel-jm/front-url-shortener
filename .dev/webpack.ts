@@ -25,5 +25,8 @@ export default <webpack.Configuration> {
   output: {
     filename: 'main.js',
     path: path.resolve('public')
-  }
+  },
+  plugins: [
+    new webpack.EnvironmentPlugin(['SERVER_URL'])
+  ]
 }

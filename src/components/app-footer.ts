@@ -18,6 +18,16 @@ class AppFooter extends SuperElement {
       footer p {
         margin: 0;
         padding: 18px 0;
+        cursor: default;
+      }
+
+      footer a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
       }
     `
   }
@@ -25,7 +35,15 @@ class AppFooter extends SuperElement {
   render() {
     return html`
       <footer>
-        <p>Made with &#128151; by Gabriel José.</p>
+        <p>Made with &#128420; by 
+          <a
+            href="https://www.linkedin.com/in/gabriel-jos%C3%A9-864590164/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Gabriel José.
+          </a>
+        </p>
       </footer>
     `
   }
