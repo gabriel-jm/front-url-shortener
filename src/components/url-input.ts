@@ -58,7 +58,7 @@ class UrlInput extends SuperElement {
       }
 
       input:focus {
-        border: 2px solid var(--main);
+        border-color: var(--main);
         box-shadow: 0 0 0 3px var(--main-bright);
       }
 
@@ -70,7 +70,12 @@ class UrlInput extends SuperElement {
         color: white;
         background-color: var(--main);
         cursor: pointer;
-        align-self: flex-end
+        align-self: flex-end;
+        transition: all 0.3s;
+      }
+
+      button:focus {
+        box-shadow: 0 0 0 3px var(--main-bright);
       }
     `
   }
