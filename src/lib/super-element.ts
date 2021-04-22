@@ -5,7 +5,7 @@ export interface ShadowMode {
 export type onFunction = (
   eventType: string,
   listener: EventListener | EventListenerObject,
-  options?: EventListenerOptions
+  options?: AddEventListenerOptions
 ) => void
 
 export interface ElementLayoutOptions {
