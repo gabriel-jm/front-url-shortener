@@ -8,6 +8,7 @@
 :root {
   --font-color: #333;
   --main: #00b1cc;
+  --main-bright: #00b1cc5a;
 }
 
 html, body {
