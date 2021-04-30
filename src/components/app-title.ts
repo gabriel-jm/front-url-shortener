@@ -9,11 +9,15 @@ class AppTitle extends SuperElement {
 
   cssStyle() {
     return css`
+      header {
+        background-color: var(--main);
+        padding: 20px 0;
+      }
+
       h1 {
-        color: var(--main);
-        padding: 0 0 16px;
+        color: white;
         text-align: center;
-        border-bottom: 1px solid var(--main);
+        margin: 0;
       }
     `
   }

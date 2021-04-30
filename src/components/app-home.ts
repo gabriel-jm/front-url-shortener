@@ -1,6 +1,7 @@
 import './app-title'
 import './app-footer'
 import './url-input'
+import './message-box'
 import { SuperElement } from '../lib/super-element'
 import { css } from '../lib/template-functions/css'
 import { html } from '../lib/template-functions/html'
@@ -20,6 +21,10 @@ class AppHome extends SuperElement {
 
   cssStyle() {
     return css`
+      * {
+        box-sizing: border-box;
+      }
+
       :host {
         display: grid;
         height: 100%;
@@ -29,6 +34,15 @@ class AppHome extends SuperElement {
       div {
         padding: 30px 0;
         text-align: center;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #676767;
+      }
+
+      message-box {
+        margin: 20px auto;
       }
     `
   }
@@ -43,6 +57,8 @@ class AppHome extends SuperElement {
         </div>
 
         <url-input />
+
+        <message-box  message="Hi" />
       </section>
 
       <app-footer />
