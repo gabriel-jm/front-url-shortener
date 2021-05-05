@@ -1,10 +1,11 @@
 import './app-title'
 import './app-footer'
 import './url-input'
-import './message-box'
+import { MessageBox } from './message-box'
 import { SuperElement } from '../lib/super-element'
 import { css } from '../lib/template-functions/css'
 import { html } from '../lib/template-functions/html'
+import { createShortenedUrl } from '../use-cases/create-shortened-url'
 
 class AppHome extends SuperElement {
   constructor() {
@@ -13,9 +14,25 @@ class AppHome extends SuperElement {
 
   init() {
     const urlInput = this.select('url-input')
+    const section = this.select('section')
 
-    urlInput.on('url-input-submit', (e: CustomEventInit) => {
-      console.log(e.detail.value)
+    urlInput.on('url-input-submit', async (e: CustomEventInit) => {
+      const result = await createShortenedUrl(e.detail.value)
+      const messageBox = new MessageBox()
+      
+      if(!result.ok) {
+        messageBox.className = 'error'
+      }
+
+      messageBox.message = result.data
+      
+      const existedMessageBox = this.select('message-box')
+      
+      if(existedMessageBox) {
+        return section.replaceChild(messageBox, existedMessageBox)
+      }
+        
+      return section.appendChild(messageBox)
     })
   }
 
@@ -42,7 +59,8 @@ class AppHome extends SuperElement {
       }
 
       message-box {
-        margin: 20px auto;
+        margin: auto;
+        margin-top: 35px;
       }
     `
   }
@@ -57,8 +75,6 @@ class AppHome extends SuperElement {
         </div>
 
         <url-input />
-
-        <message-box  message="Hi" />
       </section>
 
       <app-footer />
