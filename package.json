@@ -7,7 +7,7 @@
   "license": "ISC",
   "scripts": {
     "build": "webpack --config ./.dev/webpack.ts",
-    "dev": "nodemon --ext ts --exec 'npm run build && sfs --spa public' src/"
+    "dev": "nodemon --ext ts --exec 'npm run build && sfs public -p 3200 --spa' src/"
   },
   "repository": {
     "type": "git",

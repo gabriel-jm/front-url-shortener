@@ -6,7 +6,10 @@ export async function createShortenedUrl(rawUrl: string) {
   const match = rawUrl.trim().match(urlValidationRegex)
 
   if(!match || match[0] !== rawUrl) {
-    throw new Error('Insert an URL with a valid format')
+    return {
+      ok: false,
+      data: 'Insert an URL with a valid format'
+    }
   }
 
   const response = await urlShortenerService.save({
@@ -14,6 +17,14 @@ export async function createShortenedUrl(rawUrl: string) {
   })
 
   if(!response.ok) {
-    throw new Error('Shortened Url creation error')
+    return {
+      ok: false,
+      data: 'Shortened Url creation error'
+    }
+  }
+
+  return {
+    ok: response.ok,
+    data: response.data
   }
 }

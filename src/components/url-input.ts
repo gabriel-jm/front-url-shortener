@@ -1,6 +1,6 @@
-import { SuperElement } from "../lib/super-element";
-import { css } from '../lib/template-functions/css';
-import { html } from '../lib/template-functions/html';
+import { SuperElement } from '../lib/super-element'
+import { css } from '../lib/template-functions/css'
+import { html } from '../lib/template-functions/html'
 
 class UrlInput extends SuperElement {
   constructor() {
@@ -29,36 +29,28 @@ class UrlInput extends SuperElement {
 
       :host {
         display: flex;
-        width: max-content;
         margin: auto;
-        text-align: left;
-        padding: 0 16px;
-        gap: 10px;
+        width: 100%;
+        max-width: 500px;
+        gap: 20px;
+        justify-content: stretch;
       }
 
       input, button {
         font-family: 'Montserrat', sans-serif;
       }
-
-      span {
-        display: inline-block;
-        font-size: 1.3rem;
-        color: #777;
-        margin-bottom: 5px;
-      }
       
       input {
+        flex-grow: 1;
         font-size: 0.9rem;
-        display: block;
         padding: 10px 14px;
         border: 2px solid #ccc;
         border-radius: 5px;
-        outline: 0;
         transition: all 0.3s;
       }
 
       input:focus {
-        border: 2px solid var(--main);
+        border-color: var(--main);
         box-shadow: 0 0 0 3px var(--main-bright);
       }
 
@@ -70,17 +62,24 @@ class UrlInput extends SuperElement {
         color: white;
         background-color: var(--main);
         cursor: pointer;
-        align-self: flex-end
+        transition: all 0.3s;
+      }
+
+      button:focus {
+        box-shadow: 0 0 0 3px var(--main-bright);
+      }
+
+      @media screen and (max-width: 425px) {
+        :host {
+          flex-direction: column;
+        }
       }
     `
   }
 
   render() {
     return html`
-      <label>
-        <span>Url</span>
-        <input placeholder="Insert your url" />
-      </label>
+      <input placeholder="Insert your url" />
       <button>Generate</button>
     `
   }

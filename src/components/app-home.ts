@@ -1,9 +1,11 @@
 import './app-title'
 import './app-footer'
 import './url-input'
+import { MessageBox } from './message-box'
 import { SuperElement } from '../lib/super-element'
 import { css } from '../lib/template-functions/css'
 import { html } from '../lib/template-functions/html'
+import { createShortenedUrl } from '../use-cases/create-shortened-url'
 
 class AppHome extends SuperElement {
   constructor() {
@@ -12,14 +14,34 @@ class AppHome extends SuperElement {
 
   init() {
     const urlInput = this.select('url-input')
+    const section = this.select('section')
 
-    urlInput.on('url-input-submit', (e: CustomEventInit) => {
-      console.log(e.detail.value)
+    urlInput.on('url-input-submit', async (e: CustomEventInit) => {
+      const result = await createShortenedUrl(e.detail.value)
+      const messageBox = new MessageBox()
+      
+      if(!result.ok) {
+        messageBox.className = 'error'
+      }
+
+      messageBox.message = result.data
+      
+      const existedMessageBox = this.select('message-box')
+      
+      if(existedMessageBox) {
+        return section.replaceChild(messageBox, existedMessageBox)
+      }
+        
+      return section.appendChild(messageBox)
     })
   }
 
   cssStyle() {
     return css`
+      * {
+        box-sizing: border-box;
+      }
+
       :host {
         display: grid;
         height: 100%;
@@ -29,6 +51,16 @@ class AppHome extends SuperElement {
       div {
         padding: 30px 0;
         text-align: center;
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #676767;
+      }
+
+      message-box {
+        margin: auto;
+        margin-top: 35px;
       }
     `
   }

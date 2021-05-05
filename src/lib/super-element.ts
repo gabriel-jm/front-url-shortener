@@ -45,6 +45,9 @@ export class SuperElement extends HTMLElement {
 
   select<T extends HTMLElement>(query: string) {
     const element = this.root.querySelector(query) as T & { on: onFunction }
+
+    if(!element) return
+
     element.on = (eventType, listener, options) => {
       element.addEventListener(eventType, listener, options)
     }

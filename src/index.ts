@@ -7,12 +7,12 @@ class AppRoot extends HTMLElement {
     super()
 
     this.attachShadow({ mode: 'open' })
-    this.shadowRoot.innerHTML = this.render()
+    this.render()
     this.config()
   }
 
   config() {
-    window.addEventListener('popstate', () => this.reRender())
+    window.addEventListener('popstate', () => this.render())
   }
 
   handleUrl() {
@@ -23,12 +23,8 @@ class AppRoot extends HTMLElement {
       : routes.notFound
   }
 
-  reRender() {
-    this.shadowRoot.innerHTML = html`<${this.handleUrl()}/>`
-  }
-
   render() {
-    return html`
+    this.shadowRoot.innerHTML = html`
       <style>
         :host {
           height: 100%;
