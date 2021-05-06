@@ -1,5 +1,5 @@
-import './clipboard-icon'
-import './close-icon'
+import './icons/clipboard-icon'
+import './icons/close-icon'
 import { SuperElement } from '../lib/super-element'
 import { css } from '../lib/template-functions/css'
 import { html } from '../lib/template-functions/html'
