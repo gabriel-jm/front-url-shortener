@@ -20,7 +20,6 @@
   "devDependencies": {
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.7",
-    "raw-loader": "^4.0.2",
     "simple-files-server": "^3.0.0",
     "sucrase": "^3.17.1",
     "ts-loader": "^8.1.0",
