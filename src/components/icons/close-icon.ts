@@ -2,10 +2,6 @@ import { SuperElement } from '../../lib/super-element'
 import { html } from '../../lib/template-functions/html'
 
 class CloseIcon extends SuperElement {
-  constructor() {
-    super()
-  }
-
   render() {
     return html`
       <svg

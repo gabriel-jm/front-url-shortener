@@ -11,10 +11,6 @@ export interface IUrlInput extends HTMLElement {
 class UrlInput extends SuperElement {
   #disabled = false
 
-  constructor() {
-    super()
-  }
-
   init() {
     const input = this.select<HTMLInputElement>('input')
     const btn = this.select('button')

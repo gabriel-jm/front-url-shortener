@@ -3,10 +3,6 @@ import { css } from '../lib/template-functions/css'
 import { html } from '../lib/template-functions/html'
 
 class AppFooter extends SuperElement {
-  constructor() {
-    super()
-  }
-
   cssStyle() {
     return css`
       footer {

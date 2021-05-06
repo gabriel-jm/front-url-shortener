@@ -3,10 +3,6 @@ import { css } from '../../lib/template-functions/css'
 import { html } from '../../lib/template-functions/html'
 
 export class LoadingIcon extends SuperElement {
-  constructor() {
-    super()
-  }
-
   cssStyle() {
     return css`
       svg {

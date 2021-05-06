@@ -9,10 +9,6 @@ import { createShortenedUrl } from '../use-cases/create-shortened-url'
 import { IUrlInput } from './url-input'
 
 class AppHome extends SuperElement {
-  constructor() {
-    super()
-  }
-
   init() {
     const urlInput = this.select<IUrlInput>('url-input')
     const section = this.select('section')

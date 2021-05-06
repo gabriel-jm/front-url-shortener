@@ -6,10 +6,6 @@ import { html } from '../lib/template-functions/html'
 import { raw } from '../lib/template-functions/raw-html'
 
 export class MessageBox extends SuperElement {
-  constructor() {
-    super()
-  }
-
   get message() {
     return this.getAttribute('message') || ''
   }
