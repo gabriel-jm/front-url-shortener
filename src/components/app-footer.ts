@@ -28,7 +28,8 @@ class AppFooter extends SuperElement {
       }
 
       heart-icon::part(svg) {
-        font-size: 0.5rem;
+        width: 0.9rem;
+        height: 0.9rem;
       }
     `
   }

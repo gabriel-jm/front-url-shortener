@@ -76,10 +76,10 @@ class UrlInput extends SuperElement {
         height: 48px;
         font-size: 0.97rem;
         padding: 16px 24px;
-        border: 0;
+        border: 1px solid var(--main);
         border-radius: 4px;
-        color: white;
-        background-color: var(--main);
+        color: var(--main);
+        background-color: transparent;
         cursor: pointer;
         transition: all 0.3s;
         display: flex;
@@ -88,7 +88,14 @@ class UrlInput extends SuperElement {
       }
 
       button:focus {
+        background-color: var(--main);
+        color: white;
         box-shadow: 0 0 0 3px var(--main-bright);
+      }
+
+      button:hover {
+        background-color: var(--main);
+        color: white;
       }
 
       button loading-icon {
