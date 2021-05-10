@@ -18,12 +18,13 @@ class AppHome extends SuperElement {
       const result = await createShortenedUrl(e.detail.value)
       const messageBox = new MessageBox()
       
+      let text = result.data.url || ''
       if(!result.ok) {
+        text = result.data
         messageBox.className = 'error'
       }
-
-      messageBox.message = result.data
       
+      messageBox.message = text
       const existedMessageBox = this.select('message-box')
       
       urlInput.enable()
