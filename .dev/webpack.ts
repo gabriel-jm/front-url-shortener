@@ -1,6 +1,6 @@
 import 'dotenv/config'
-import * as path from 'path'
-import * as webpack from 'webpack'
+import path from 'path'
+import webpack from 'webpack'
 
 export default <webpack.Configuration> {
   mode: process.env.NODE_ENV || 'production',
@@ -11,16 +11,11 @@ export default <webpack.Configuration> {
         test: /\.ts$/,
         use: 'ts-loader',
         exclude: /node_modules/
-      },
-      {
-        test: /\.(css|html)$/,
-        use: ['raw-loader'],
-        exclude: /node_modules/
       }
     ]
   },
   resolve: {
-    extensions: ['.html', '.css', '.ts']
+    extensions: ['.ts']
   },
   output: {
     filename: 'main.js',

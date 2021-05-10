@@ -4,7 +4,9 @@
     "module": "ESNext",
     "outDir": "./public",
     "noImplicitAny": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "sourceRoot": "src"
   },
   "include": ["src/**/*"]
 }

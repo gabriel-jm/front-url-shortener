@@ -1,12 +1,9 @@
+import './icons/heart-icon'
 import { SuperElement } from '../lib/super-element'
 import { css } from '../lib/template-functions/css'
 import { html } from '../lib/template-functions/html'
 
 class AppFooter extends SuperElement {
-  constructor() {
-    super()
-  }
-
   cssStyle() {
     return css`
       footer {
@@ -29,13 +26,18 @@ class AppFooter extends SuperElement {
       footer a:hover {
         text-decoration: underline;
       }
+
+      heart-icon::part(svg) {
+        width: 0.9rem;
+        height: 0.9rem;
+      }
     `
   }
 
   render() {
     return html`
       <footer>
-        <p>Made with &#128420; by 
+        <p>Made with <heart-icon /> by 
           <a
             href="https://www.linkedin.com/in/gabriel-jos%C3%A9-864590164/"
             target="_blank"

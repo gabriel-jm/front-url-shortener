@@ -1,11 +1,7 @@
-import { SuperElement } from '../lib/super-element'
-import { html } from '../lib/template-functions/html'
+import { SuperElement } from '../../lib/super-element'
+import { html } from '../../lib/template-functions/html'
 
 class ClipboardIcon extends SuperElement {
-  constructor() {
-    super()
-  }
-
   render() {
     return html`
       <svg

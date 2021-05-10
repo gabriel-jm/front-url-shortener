@@ -1,23 +1,39 @@
+import './icons/loading-icon'
 import { SuperElement } from '../lib/super-element'
 import { css } from '../lib/template-functions/css'
 import { html } from '../lib/template-functions/html'
 
+export interface IUrlInput extends HTMLElement {
+  enable(): void
+  disable(): void
+}
+
 class UrlInput extends SuperElement {
-  constructor() {
-    super()
-  }
+  #disabled = false
 
   init() {
     const input = this.select<HTMLInputElement>('input')
     const btn = this.select('button')
 
     btn.on('click', () => {
+      if(this.#disabled) return
+
       const { value = '' } = input
 
       this.dispatchEvent(new CustomEvent('url-input-submit', {
         detail: { value }
       }))
     })
+  }
+
+  enable() {
+    this.#disabled = false
+    this.select('button').innerHTML = 'Generate'
+  }
+
+  disable() {
+    this.#disabled = true
+    this.select('button').innerHTML = html`<loading-icon />`
   }
 
   cssStyle() {
@@ -38,12 +54,13 @@ class UrlInput extends SuperElement {
 
       input, button {
         font-family: 'Montserrat', sans-serif;
+        color: inherit;
       }
       
       input {
         flex-grow: 1;
-        font-size: 0.9rem;
-        padding: 10px 14px;
+        font-size: 1rem;
+        padding: 10px 16px;
         border: 2px solid #ccc;
         border-radius: 5px;
         transition: all 0.3s;
@@ -55,18 +72,34 @@ class UrlInput extends SuperElement {
       }
 
       button {
-        font-size: 0.9rem;
-        padding: 12px 18px;
-        border: 0;
+        width: 120px;
+        height: 48px;
+        font-size: 0.97rem;
+        padding: 16px 24px;
+        border: 1px solid var(--main);
         border-radius: 4px;
-        color: white;
-        background-color: var(--main);
+        color: var(--main);
+        background-color: transparent;
         cursor: pointer;
         transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       button:focus {
+        background-color: var(--main);
+        color: white;
         box-shadow: 0 0 0 3px var(--main-bright);
+      }
+
+      button:hover {
+        background-color: var(--main);
+        color: white;
+      }
+
+      button loading-icon {
+        font-size: 0.6rem;
       }
 
       @media screen and (max-width: 425px) {

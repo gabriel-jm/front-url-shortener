@@ -6,28 +6,28 @@ import { SuperElement } from '../lib/super-element'
 import { css } from '../lib/template-functions/css'
 import { html } from '../lib/template-functions/html'
 import { createShortenedUrl } from '../use-cases/create-shortened-url'
+import { IUrlInput } from './url-input'
 
 class AppHome extends SuperElement {
-  constructor() {
-    super()
-  }
-
   init() {
-    const urlInput = this.select('url-input')
+    const urlInput = this.select<IUrlInput>('url-input')
     const section = this.select('section')
 
     urlInput.on('url-input-submit', async (e: CustomEventInit) => {
+      urlInput.disable()
       const result = await createShortenedUrl(e.detail.value)
       const messageBox = new MessageBox()
       
+      let text = result.data.url || ''
       if(!result.ok) {
+        text = result.data
         messageBox.className = 'error'
       }
-
-      messageBox.message = result.data
       
+      messageBox.message = text
       const existedMessageBox = this.select('message-box')
       
+      urlInput.enable()
       if(existedMessageBox) {
         return section.replaceChild(messageBox, existedMessageBox)
       }
