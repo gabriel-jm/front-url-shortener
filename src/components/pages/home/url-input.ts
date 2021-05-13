@@ -13,9 +13,11 @@ class UrlInput extends SuperElement {
 
   init() {
     const input = this.select<HTMLInputElement>('input')
-    const btn = this.select('button')
+    const form = this.select('form')
 
-    btn.on('click', () => {
+    form.on('submit', e => {
+      e.preventDefault()
+
       if(this.#disabled) return
 
       const { value = '' } = input
@@ -43,11 +45,11 @@ class UrlInput extends SuperElement {
         outline: 0;
       }
 
-      :host {
-        display: flex;
+      form {
         margin: auto;
         width: 100%;
         max-width: 500px;
+        display: flex;
         gap: 20px;
         justify-content: stretch;
       }
@@ -103,7 +105,7 @@ class UrlInput extends SuperElement {
       }
 
       @media screen and (max-width: 425px) {
-        :host {
+        form {
           flex-direction: column;
           padding: 0 18px;
         }
@@ -117,8 +119,10 @@ class UrlInput extends SuperElement {
 
   render() {
     return html`
-      <input placeholder="Insert your url" />
-      <button>Generate</button>
+      <form>
+        <input placeholder="Insert your url" />
+        <button>Generate</button>
+      </form>
     `
   }
 }
