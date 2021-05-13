@@ -1,9 +1,9 @@
-import './icons/clipboard-icon'
-import './icons/close-icon'
-import { SuperElement } from '../lib/super-element'
-import { css } from '../lib/template-functions/css'
-import { html } from '../lib/template-functions/html'
-import { raw } from '../lib/template-functions/raw-html'
+import '../../icons/clipboard-icon'
+import '../../icons/close-icon'
+import { SuperElement } from '../../../lib/super-element'
+import { css } from '../../../lib/template-functions/css'
+import { html } from '../../../lib/template-functions/html'
+import { raw } from '../../../lib/template-functions/raw-html'
 
 export class MessageBox extends SuperElement {
   get message() {

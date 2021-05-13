@@ -2,10 +2,10 @@ import './app-title'
 import './app-footer'
 import './url-input'
 import { MessageBox } from './message-box'
-import { SuperElement } from '../lib/super-element'
-import { css } from '../lib/template-functions/css'
-import { html } from '../lib/template-functions/html'
-import { createShortenedUrl } from '../use-cases/create-shortened-url'
+import { SuperElement } from '../../../lib/super-element'
+import { css } from '../../../lib/template-functions/css'
+import { html } from '../../../lib/template-functions/html'
+import { createShortenedUrl } from '../../../use-cases/create-shortened-url'
 import { IUrlInput } from './url-input'
 
 class AppHome extends SuperElement {
@@ -61,6 +61,12 @@ class AppHome extends SuperElement {
       message-box {
         margin: auto;
         margin-top: 35px;
+      }
+
+      @media screen and (max-width: 425px) {
+        message-box {
+          margin: 35px 18px 0;
+        }
       }
     `
   }

@@ -1,2 +1,2 @@
-import './app-home'
-import './not-found'
+import './pages/home/app-home'
+import './pages/not-found/index'
