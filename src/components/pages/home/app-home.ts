@@ -62,6 +62,12 @@ class AppHome extends SuperElement {
         margin: auto;
         margin-top: 35px;
       }
+
+      @media screen and (max-width: 425px) {
+        message-box {
+          margin: 35px 18px 0;
+        }
+      }
     `
   }
 

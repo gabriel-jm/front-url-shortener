@@ -105,6 +105,11 @@ class UrlInput extends SuperElement {
       @media screen and (max-width: 425px) {
         :host {
           flex-direction: column;
+          padding: 0 18px;
+        }
+
+        button {
+          width: 100%;
         }
       }
     `
