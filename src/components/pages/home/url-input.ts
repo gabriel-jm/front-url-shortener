@@ -1,7 +1,7 @@
-import './icons/loading-icon'
-import { SuperElement } from '../lib/super-element'
-import { css } from '../lib/template-functions/css'
-import { html } from '../lib/template-functions/html'
+import '../../icons/loading-icon'
+import { SuperElement } from '../../../lib/super-element'
+import { css } from '../../../lib/template-functions/css'
+import { html } from '../../../lib/template-functions/html'
 
 export interface IUrlInput extends HTMLElement {
   enable(): void

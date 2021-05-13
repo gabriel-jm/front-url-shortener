@@ -1,7 +1,7 @@
-import './icons/heart-icon'
-import { SuperElement } from '../lib/super-element'
-import { css } from '../lib/template-functions/css'
-import { html } from '../lib/template-functions/html'
+import '../../icons/heart-icon'
+import { SuperElement } from '../../../lib/super-element'
+import { css } from '../../../lib/template-functions/css'
+import { html } from '../../../lib/template-functions/html'
 
 class AppFooter extends SuperElement {
   cssStyle() {

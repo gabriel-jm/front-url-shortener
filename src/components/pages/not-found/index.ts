@@ -1,7 +1,7 @@
-import router from '../lib/router'
-import { SuperElement } from '../lib/super-element'
-import { css } from '../lib/template-functions/css'
-import { html } from '../lib/template-functions/html'
+import router from '../../../lib/router'
+import { SuperElement } from '../../../lib/super-element'
+import { css } from '../../../lib/template-functions/css'
+import { html } from '../../../lib/template-functions/html'
 
 class NotFound extends SuperElement {
   init() {
